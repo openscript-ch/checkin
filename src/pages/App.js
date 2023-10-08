@@ -1,14 +1,13 @@
-import { loadMarkup } from "../loaders/loadMarkup";
+import { loadMarkup } from "../loaders/loadMarkup.js";
 
 customElements.define(
-  "checkin-app",
+  "checkin-pages-app",
   class extends HTMLElement {
     constructor() {
       super();
-      this.initialize();
     }
 
-    async initialize() {
+    async connectedCallback() {
       const template = await loadMarkup("./App.html", import.meta.url);
 
       const shadowRoot = this.attachShadow({ mode: "open" });

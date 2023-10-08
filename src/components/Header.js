@@ -5,10 +5,9 @@ customElements.define(
   class extends HTMLElement {
     constructor() {
       super();
-      this.initialize();
     }
 
-    async initialize() {
+    async connectedCallback() {
       const template = await loadMarkup("./Header.html", import.meta.url);
 
       const shadowRoot = this.attachShadow({ mode: "open" });
