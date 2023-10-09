@@ -1,7 +1,7 @@
 import { loadMarkup } from "../loaders/loadMarkup.js";
-import "../components/Settings.js";
-import "../components/Input.js";
-import "../components/Output.js";
+import "../sections/Settings.js";
+import "../sections/Input.js";
+import "../sections/Output.js";
 
 const template = await loadMarkup("./App.html", import.meta.url);
 
