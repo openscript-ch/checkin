@@ -1,5 +1,7 @@
 import { loadMarkup } from "../loaders/loadMarkup.js";
 
+const template = await loadMarkup("./Footer.html", import.meta.url);
+
 customElements.define(
   "checkin-footer",
   class extends HTMLElement {
@@ -8,8 +10,6 @@ customElements.define(
     }
 
     async connectedCallback() {
-      const template = await loadMarkup("./Footer.html", import.meta.url);
-
       const shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(template.content.cloneNode(true));
     }

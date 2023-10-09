@@ -1,3 +1,7 @@
+import "./pages/App.js";
+import "./pages/Documentation.js";
+import "./pages/Guide.js";
+
 customElements.define(
   "checkin-router",
   class extends HTMLElement {
@@ -17,15 +21,12 @@ customElements.define(
     async load() {
       switch (location.hash) {
         case "":
-          await import("./pages/App.js");
           this.shadowRoot.innerHTML = "<checkin-pages-app />";
           break;
         case "#documentation":
-          await import("./pages/Documentation.js");
           this.shadowRoot.innerHTML = "<checkin-pages-documentation />";
           break;
         case "#guide":
-          await import("./pages/Guide.js");
           this.shadowRoot.innerHTML = "<checkin-pages-guide />";
           break;
 
