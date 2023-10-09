@@ -20,9 +20,13 @@ customElements.define(
           await import("./pages/App.js");
           this.shadowRoot.innerHTML = "<checkin-pages-app />";
           break;
-        case "#doc":
-          await import("./pages/Doc.js");
-          this.shadowRoot.innerHTML = "<checkin-pages-doc />";
+        case "#documentation":
+          await import("./pages/Documentation.js");
+          this.shadowRoot.innerHTML = "<checkin-pages-documentation />";
+          break;
+        case "#guide":
+          await import("./pages/Guide.js");
+          this.shadowRoot.innerHTML = "<checkin-pages-guide />";
           break;
 
         default:

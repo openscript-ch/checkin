@@ -4,11 +4,7 @@
   --checkin-colors-dark: #462749;
   --checkin-colors-bright: #E086D3;
   --checkin-colors-alternative: #BAD1CD;
-  --checkin-breakpoints-xxl: 120rem;
-  --checkin-breakpoints-xl: 100rem;
-  --checkin-breakpoints-l: 80rem;
-  --checkin-breakpoints-m: 60rem;
-  --checkin-breakpoints-s: 40rem;
+  --checkin-colors-white: #FFFFFF;
 }
 
 html {
@@ -22,6 +18,35 @@ body {
   flex-direction: column;
   margin: 0;
   min-height: 100%;
-  padding: 0 20rem;
-  background-color: var(--checkin-colors-secondary)
+  background-color: var(--checkin-colors-white);
+}
+
+body > * {
+  padding: 0 10%;
+}
+
+body > * > *:not(checkin-router) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+header, footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--checkin-colors-secondary);
+}
+
+header {
+  height: 7rem;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  height: 5rem;
 }
