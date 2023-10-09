@@ -1,12 +1,9 @@
 import { loadMarkup } from "../loaders/loadMarkup.js";
-import "../components/Settings.js";
-import "../components/Input.js";
-import "../components/Output.js";
 
-const template = await loadMarkup("./App.html", import.meta.url);
+const template = await loadMarkup("./Output.html", import.meta.url);
 
 customElements.define(
-  "checkin-pages-app",
+  "checkin-settings",
   class extends HTMLElement {
     constructor() {
       super();
