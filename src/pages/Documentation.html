@@ -1,4 +1,70 @@
 <h1>Documentation</h1>
 <p>CheckIn is built buildless (pun intended) without any external dependencies.</p>
 
-<h2>Background story</h2>
+<h2>Story</h2>
+
+<img src=".//src/images/checkin-in-action.png" alt="" />
+
+<h2>Learnings</h2>
+
+What were the learnings from doing this? How does it feel to use vanilla JavaScript and web components, when you have worked for years with component frameworks like React, Svelte and so on?
+
+<h3>Composablity</h3>
+
+<p>
+  Web components aren't as composable as components of frameworks that depend on a Virtual DOM. For example, if you want
+  to build a table and have a separate component for each row, you can't use a custom element, because browsers expect
+  that <code>&lt;tr&gt;</code>-elements are direct children of the <code>&lt;tbody&gt;</code>-element. This doesn't work:
+</p>
+<pre><code>&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;custom-tr&gt;
+      &lt;tr&gt;&lt;/tr&gt;
+    &lt;/custom-tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+<p>
+  It is possible to extend existing elements, which can be used <code>&lt;tr is="custom-row"&gt;&lt;/tr&gt;</code></code>.
+</p>
+<pre><code>customElements.define(
+  "custom-row",
+  class extends HTMLTableRowElement {
+    constructor() {
+      super();
+    }
+  },
+  { extends: "tr" }
+);
+</code></pre>
+<p>
+  If you want to compose the element <code>&lt;slot&gt;</code>-elements, you need to attach a Shadow DOM. If you try to do so, you'll face the error <code>DOMException: Operation is not supported</code>. MDN shows to which <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/attachShadow#elements_you_can_attach_a_shadow_to">elements you can attach a shadow to</a>.
+</p>
+<p>
+  There are other limitations. For example <code>&lt;slot&gt;</code>-elements <a href="https://html.spec.whatwg.org/multipage/tables.html#the-tbody-element">cannot be used</a> in tables. This limits you quite a lot, when you want to build a data grid component.
+</p>
+<p>
+  Knowing this, you are back to where you create elements programatically or assembling HTML strings.
+</p>
+
+<h3>Templating</h3>
+<p>
+  In JavaScript there isn't a clean built-in tool, generate markup outside of the application code. Even though there are <code>&lt;template&gt;</code> and <code>&lt;slot&gt;</code>-elements, they have some limitations, which were mentioned above. So you still have the situation, generating HTML inside your JavaScript with template literal strings and assigning them via <code>innerHTML</code> to some elements.
+</p>
+<p>
+  Templating is also restricted by the way attributes work with web components. They only allow to pass primitiv data.
+</p>
+
+
+
+
+
+<h3>Other learnings</h3>
+
+While creating CheckIn I had many smaller learnings:
+
+<ul>
+  <li><code>&lt;custom-elements&gt;</code> cannot be self-closing elements.</li>
+</ul>
+
+<h2>Conclusion</h2>

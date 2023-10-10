@@ -25,6 +25,12 @@ body > * {
   padding: 0 10%;
 }
 
+@media (min-width: 80rem) {
+  body > * {
+    padding: 0 20%;
+  }
+}
+
 body > * > *:not(checkin-router) {
   display: flex;
   flex-direction: column;
