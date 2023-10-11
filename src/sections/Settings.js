@@ -1,7 +1,6 @@
 import { loadMarkup } from "../utils/loadMarkup.js";
 import { getSettings, setSettings } from "../models/settings.js";
 import { serializeFormData } from "../utils/serializeFormData.js";
-import "../components/SectionsFieldset.js";
 import "../components/StatusesFieldset.js";
 
 const template = await loadMarkup("./Settings.html", import.meta.url);
@@ -13,12 +12,12 @@ customElements.define(
 
     constructor() {
       super();
+      const shadowRoot = this.attachShadow({ mode: "open" });
+      shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
     async connectedCallback() {
-      const shadowRoot = this.attachShadow({ mode: "open" });
-      shadowRoot.appendChild(template.content.cloneNode(true));
-      this.loadData();
+      this.loadSettings();
 
       const form = this.shadowRoot.querySelector("form");
       form.addEventListener("submit", (e) => {
@@ -28,12 +27,10 @@ customElements.define(
       })
     }
 
-    loadData() {
+    loadSettings() {
       const statusesForm = this.shadowRoot.querySelector("checkin-statuses-fieldset");
-      const sectionsForm = this.shadowRoot.querySelector("checkin-sections-fieldset");
       this.settings = getSettings();
       statusesForm.setStatuses(this.settings.statuses);
-      sectionsForm.setSections(this.settings.sections);
     }
   },
 );

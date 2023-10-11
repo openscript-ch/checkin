@@ -7,11 +7,11 @@ customElements.define(
   class extends HTMLElement {
     constructor() {
       super();
+      const shadowRoot = this.attachShadow({ mode: "open" });
+      shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
     async connectedCallback() {
-      const shadowRoot = this.attachShadow({ mode: "open" });
-      shadowRoot.appendChild(template.content.cloneNode(true));
       this.markAsActive();
       window.addEventListener("hashchange", () => this.markAsActive());
     }

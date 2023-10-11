@@ -25,17 +25,6 @@ const DEFAULT_SETTINGS = {
       icon: "⏹️",
       title: "Stopped"
     }
-  ],
-  sections: [
-    {
-      title: "Yesterday",
-    },
-    {
-      title: "Today"
-    },
-    {
-      title: "Backlog"
-    }
   ]
 }
 

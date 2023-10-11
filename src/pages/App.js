@@ -10,9 +10,6 @@ customElements.define(
   class extends HTMLElement {
     constructor() {
       super();
-    }
-
-    async connectedCallback() {
       const shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(template.content.cloneNode(true));
     }

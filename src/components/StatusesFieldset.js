@@ -10,12 +10,11 @@ customElements.define(
     constructor() {
       super();
       this.internals = this.attachInternals();
+      const shadowRoot = this.attachShadow({ mode: "open" });
+      shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
     async connectedCallback() {
-      const shadowRoot = this.attachShadow({ mode: "open" });
-      shadowRoot.appendChild(template.content.cloneNode(true));
-
       const addButton = this.shadowRoot.querySelector("#add-status");
       addButton.addEventListener("click", () => {
         const lastRow = this.shadowRoot.querySelector("tbody tr:last-of-type");
