@@ -1,4 +1,4 @@
-import { loadMarkup } from "../loaders/loadMarkup.js";
+import { loadMarkup } from "../utils/loadMarkup.js";
 import "../sections/Settings.js";
 import "../sections/Input.js";
 import "../sections/Output.js";

@@ -55,17 +55,36 @@ What were the learnings from doing this? How does it feel to use vanilla JavaScr
   Templating is also restricted by the way attributes work with web components. They only allow to pass primitiv data.
 </p>
 
-
-
-
+<h3>Forms</h3>
+<p>
+  Complex forms, like multi step wizards, have always been troublesome. For splitting up a form with web components, there are some extra steps to consider.
+</p>
+<p>
+  In some parts it is still not very straight forward, to create forms together with web components. Validation messages inside a Shadow DOM seem to be buggy on Chrome. For more details I can recommend <a href="https://web.dev/more-capable-form-controls/#form-associated-custom-elements">this</a> or <a href="https://css-tricks.com/creating-custom-form-controls-with-elementinternals">that</a> article.
+</p>
 
 <h3>Other learnings</h3>
 <p>
-While creating CheckIn I had many smaller learnings:
+  While creating CheckIn I had many smaller learnings:
 </p>
 <ul>
   <li><code>&lt;custom-elements&gt;</code> cannot be self-closing elements.</li>
   <li>Reading data attributes like <code>data-status-id</code> is easy with <code>dataset</code> property on elements. The names of the data attributes will be even camel cased like <code>statusId</code>.</li>
 </ul>
 
+<h2>Patterns</h2>
+
+
 <h2>Conclusion</h2>
+<p>
+  When it comes to web development, the choice between native web components and popular frameworks like React, Svelte, and Angular often depends on the nature of the project. Native web components are excellent for creating simple, standalone elements such as a stylish progress bar or a user-friendly slideshow. They provide the necessary tools and are seamlessly integrated into the web platform, making them a great choice for these atomic components.
+</p>
+<p>
+  However, as web applications grow in complexity, the limitations of native web components become evident. Composing intricate layouts or developing complex components can become quite challenging with native web components. This is where the struggle begins, and it's important to recognize when native web components may not be the ideal choice for the task at hand.
+</p>
+<p>
+  Through my experiences, I've learned a valuable lesson. While native web components have their strengths, I still find myself depending on frameworks like React or Svelte when building single-page applications (SPAs). SPAs, known for their dynamic content updates within a single HTML page, benefit greatly from the features and architecture offered by these frameworks. The convenience and efficiency they bring to SPA development make them my preferred choice in such scenarios.
+</p>
+<p>
+  Another interesting insight I've gained is the stark contrast between Angular and Virtual DOM-based frameworks. Angular, with its use of the Shadow DOM, differs significantly from the Virtual DOM-based counterparts like React. Bridging between Shadow DOM components can be more challenging and intricate compared to the relative ease of working with components based on the Virtual DOM. This difference in component interaction is an important factor to consider when choosing a framework for your project.
+</p>

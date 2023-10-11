@@ -1,4 +1,4 @@
-import { loadMarkup } from "../loaders/loadMarkup.js";
+import { loadMarkup } from "../utils/loadMarkup.js";
 
 const template = await loadMarkup("./Footer.html", import.meta.url);
 

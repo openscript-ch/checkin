@@ -1,5 +1,6 @@
-import { loadMarkup } from "../loaders/loadMarkup.js";
+import { loadMarkup } from "../utils/loadMarkup.js";
 import { getSettings, setSettings } from "../models/settings.js";
+import { serializeFormData } from "../utils/serializeFormData.js";
 import "../components/StatusesFieldset.js";
 
 const template = await loadMarkup("./Settings.html", import.meta.url);
@@ -17,6 +18,13 @@ customElements.define(
       const shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.appendChild(template.content.cloneNode(true));
       this.loadStatuses();
+
+      const form = this.shadowRoot.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        console.log(serializeFormData(formData));
+      })
     }
 
     loadStatuses() {
